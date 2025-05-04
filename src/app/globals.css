@@ -17,8 +17,13 @@
   }
 
   @font-face {
-    font-family: "robert-reguler";
-    src: url("/fonts/robert-reguler.woff2") format("woff2");
+    font-family: "robert-regular";
+    src: url("/fonts/robert-regular.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "zentry-regular";
+    src: url("/fonts/zentry-regular.woff2") format("woff2");
   }
 }
 
@@ -26,7 +31,8 @@
   --font-circular-web: "circular-web", sans-serif;
   --font-general: "general", sans-serif;
   --font-robert-medium: "robert-medium", sans-serif;
-  --font-robert-reguler: "robert-reguler", sans-serif;
+  --font-robert-regular: "robert-regular", sans-serif;
+  --font-zentry-regular: "zentry-regular", sans-serif;
 
   --color-blue-50: #dfdff0;
   --color-blue-75: #dfdff2;
@@ -38,6 +44,25 @@
 
   --color-yellow-100: #8e983f;
   --color-yellow-300: #edff66;
+}
+
+@layer utilities {
+  .mask-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
+  }
+
+  .special-font span {
+    font-family: "zentry-regular";
+    font-feature-settings: "ss01" on;
+  }
+
+  .hero-heading {
+    @apply font-zentry-regular text-5xl font-black uppercase sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+  }
 }
 
 body {

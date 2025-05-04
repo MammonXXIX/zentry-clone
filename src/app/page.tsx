@@ -1,7 +1,10 @@
+import Hero from "./components/Hero";
+
 const Home = () => {
   return (
-    <main>
-      <h1 className="text-5xl font-bold text-violet-300">Welcome to awwward</h1>
+    <main className="min-h-screen w-screen overflow-x-hidden">
+      <Hero />
+      <section className="min-h-screen bg-blue-500" />
     </main>
   );
 };
