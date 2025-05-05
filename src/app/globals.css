@@ -51,6 +51,10 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
+  .about-clip-path {
+    clip-path: polygon(5% 10%, 80% 15%, 95% 80%, 10% 90%);
+  }
+
   .absolute-center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
@@ -61,7 +65,13 @@
   }
 
   .hero-heading {
-    @apply font-zentry-regular text-5xl font-black uppercase sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+    @apply font-zentry-regular text-4xl font-black uppercase sm:right-10 sm:text-5xl md:text-6xl lg:text-7xl;
+  }
+
+  .animated-word {
+    transform: translate3d(10px, 50px, -60px) rotateY(60deg) rotateX(-40deg);
+    transform-origin: 50% 50% -150px !important;
+    will-change: opacity, transform;
   }
 }
 
