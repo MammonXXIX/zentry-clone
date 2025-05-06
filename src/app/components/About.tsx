@@ -4,6 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import AnimatedTitle from "./AnimatedTitle";
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,18 +15,30 @@ const About = () => {
         trigger: "#clip",
         start: "center center",
         end: "+=800 center",
-        scrub: 0.5,
+        scrub: 1,
         pin: true,
         pinSpacing: true,
       },
     });
 
-    clipAnimation.to("#about-image", {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      width: "100vw",
-      height: "100vh",
-      borderRadius: 0,
-    });
+    clipAnimation.fromTo(
+      "#about-image",
+      {
+        // translateZ: -100,
+        // rotationX: 20,
+        // rotationY: 20,
+      },
+      {
+        // translateZ: 0,
+        // rotationX: 0,
+        // rotationY: 0,
+        width: "100vw",
+        height: "100vh",
+        border: 0,
+        borderRadius: 0,
+        ease: "power2.inOut",
+      },
+    );
   });
 
   return (
@@ -36,21 +49,21 @@ const About = () => {
         </h1>
         <AnimatedTitle
           title="disc<span>o</span>ver the world's <br /> largest shared <span>a</span>dventure"
-          className="mt-5"
+          className="my-10"
         />
       </div>
       <div className="relative h-dvh w-screen" id="clip">
         <div
-          className="about-clip-path absolute left-1/2 z-50 h-[90vh] w-[38rem] -translate-x-1/2"
+          className="absolute left-1/2 z-50 h-[85vh] w-[30vw] -translate-x-1/2 overflow-hidden rounded-2xl border-2"
           id="about-image"
         >
           <img
             src="images/about.webp"
-            alt="Background"
-            className="size-full object-cover"
+            alt="background"
+            className="absolute size-full object-cover"
           />
         </div>
-        <div className="absolute bottom-10 w-screen text-center text-sm">
+        <div className="absolute bottom-5 w-screen text-center text-sm">
           <p className="font-robert-medium">
             The Metagame begins-your life, now an epic MMORPG
           </p>

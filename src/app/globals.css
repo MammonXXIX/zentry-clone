@@ -51,8 +51,19 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  .about-clip-path {
-    clip-path: polygon(5% 10%, 80% 15%, 95% 80%, 10% 90%);
+  #about-image {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transition: transform 0.5s ease-out;
+    will-change: transform;
+    cursor: pointer;
+    backface-visibility: hidden;
+    transform-origin: center center;
+  }
+
+  #about-image img {
+    transform: translateZ(20px);
+    backface-visibility: hidden;
   }
 
   .absolute-center {
@@ -72,6 +83,34 @@
     transform: translate3d(10px, 50px, -60px) rotateY(60deg) rotateX(-40deg);
     transform-origin: 50% 50% -150px !important;
     will-change: opacity, transform;
+  }
+
+  .floating-nav {
+    @apply rounded-lg bg-black;
+  }
+
+  .audio-bar {
+    @apply h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
+  }
+
+  .audio-bar.active {
+    animation: animated-bar 0.5s ease infinite;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+  }
+
+  @keyframes animated-bar {
+    0% {
+      height: 4px;
+      transform: translateY(-0px);
+    }
+    50% {
+      height: 16px;
+      transform: translateY(-4px);
+    }
+    100% {
+      height: 4px;
+      transform: translateY(-0px);
+    }
   }
 }
 

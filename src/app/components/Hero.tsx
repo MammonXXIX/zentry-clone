@@ -10,20 +10,20 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const [index, setIndex] = useState(1);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(1);
+  const [previewVideoIndex, setPreviewVideoIndex] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
   const nextVideoRef = useRef<HTMLVideoElement>(null);
 
   const getVideoSource = (index: number) => `/videos/hero-${index}.mp4`;
-  const upcomingVideoIndex = (index % totalVideos) + 1;
+  const upcomingVideoIndex = (previewVideoIndex % totalVideos) + 1;
 
   const handleMiniVideoClicked = () => {
     setIsClicked(true);
-    setIndex(upcomingVideoIndex);
+    setPreviewVideoIndex(upcomingVideoIndex);
   };
 
   const handleVideoLoadedData = () => {
@@ -33,8 +33,8 @@ const Hero = () => {
   useGSAP(
     () => {
       if (isClicked) {
-        gsap.set("#next-mini-video", { visibility: "visible" });
-        gsap.to("#next-mini-video", {
+        gsap.set("#preview-video-animation", { visibility: "visible" });
+        gsap.to("#preview-video-animation", {
           transformOrigin: "center center",
           scale: 1,
           width: "100%",
@@ -44,9 +44,10 @@ const Hero = () => {
           onStart: () => {
             if (nextVideoRef.current) nextVideoRef.current.play();
           },
+          onComplete: () => setActiveVideoIndex(previewVideoIndex),
         });
 
-        gsap.from("#current-mini-video", {
+        gsap.from("#preview-video-box", {
           transformOrigin: "center center",
           scale: 0,
           duration: 1.5,
@@ -54,13 +55,12 @@ const Hero = () => {
         });
       }
     },
-    { dependencies: [index], revertOnUpdate: true },
+    { dependencies: [previewVideoIndex], revertOnUpdate: true },
   );
 
   useGSAP(() => {
     gsap.set("#video-frame", {
       clipPath: "polygon(5% 5%, 70% 0%, 95% 90%, 10% 95%)",
-      borderRadius: "0 0 40% 10%",
     });
 
     gsap.from("#video-frame", {
@@ -83,17 +83,14 @@ const Hero = () => {
         className="bg-blue-75 relative z-50 h-dvh w-screen overflow-hidden"
       >
         <div>
-          <div className="mask-clip-path absolute-center z-50 cursor-pointer overflow-hidden rounded-lg">
-            <div
-              onClick={handleMiniVideoClicked}
-              className="origin-center scale-50 opacity-0 transition-all duration-500 ease-in hover:scale-100 hover:opacity-100"
-            >
+          <div className="absolute-center z-50 scale-50 cursor-pointer overflow-hidden rounded-2xl opacity-0 transition-all duration-300 ease-in hover:scale-100 hover:opacity-100">
+            <div onClick={handleMiniVideoClicked}>
               <video
                 ref={nextVideoRef}
                 src={getVideoSource(upcomingVideoIndex)}
                 loop
                 muted
-                id="current-mini-video"
+                id="preview-video-box"
                 className="size-64 origin-center scale-150 object-cover"
                 onLoadedData={handleVideoLoadedData}
               />
@@ -101,15 +98,17 @@ const Hero = () => {
           </div>
           <video
             ref={nextVideoRef}
-            src={getVideoSource(index)}
+            src={getVideoSource(previewVideoIndex)}
             loop
             muted
-            id="next-mini-video"
+            id="preview-video-animation"
             className="absolute-center invisible z-40 size-64 object-cover"
             onLoadedData={handleVideoLoadedData}
           />
           <video
-            src={getVideoSource(index > totalVideos ? 1 : index)}
+            src={getVideoSource(
+              activeVideoIndex > totalVideos ? 1 : activeVideoIndex,
+            )}
             autoPlay
             loop
             muted
@@ -132,7 +131,7 @@ const Hero = () => {
               id="watch-trailer"
               title="Watch Trailer"
               leftIcon={<TiLocationArrow />}
-              className="flex gap-2 bg-yellow-300"
+              className="flex gap-2 bg-yellow-300 px-7 py-3"
             />
           </div>
         </div>
