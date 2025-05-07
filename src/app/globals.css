@@ -51,21 +51,6 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
-  #about-image {
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    transition: transform 0.5s ease-out;
-    will-change: transform;
-    cursor: pointer;
-    backface-visibility: hidden;
-    transform-origin: center center;
-  }
-
-  #about-image img {
-    transform: translateZ(20px);
-    backface-visibility: hidden;
-  }
-
   .absolute-center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
@@ -76,7 +61,11 @@
   }
 
   .hero-heading {
-    @apply font-zentry-regular text-4xl font-black uppercase sm:right-10 sm:text-5xl md:text-6xl lg:text-7xl;
+    @apply font-zentry-regular text-5xl font-black uppercase sm:right-10 sm:text-7xl md:text-7xl lg:text-9xl;
+  }
+
+  .bento-heading {
+    @apply font-zentry-regular text-4xl font-black uppercase md:text-6xl;
   }
 
   .animated-word {

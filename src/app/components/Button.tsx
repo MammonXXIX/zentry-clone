@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
 type ButtonProps = {
@@ -12,7 +13,10 @@ const Button = ({ id, title, leftIcon, rightIcon, className }: ButtonProps) => {
   return (
     <button
       id={id}
-      className={`w-fit cursor-pointer rounded-full bg-violet-50 ${className}`}
+      className={cn(
+        "w-fit cursor-pointer rounded-full bg-violet-50",
+        className,
+      )}
     >
       {leftIcon}
       <span className="font-general text-xs uppercase">{title}</span>
