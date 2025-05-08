@@ -51,6 +51,20 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   }
 
+  .story-clip-path {
+    clip-path: polygon(5% 5%, 85% 20%, 100% 80%, 0% 100%);
+  }
+
+  .story-image-container {
+    filter: url("#flt_tag");
+  }
+
+  .story-image {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform: rotateZ(5deg) skew(10deg, 10deg);
+  }
+
   .absolute-center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
