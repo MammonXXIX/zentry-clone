@@ -13,7 +13,7 @@ const Hero = () => {
   const [activeVideoIndex, setActiveVideoIndex] = useState(1);
   const [previewVideoIndex, setPreviewVideoIndex] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
-  const [loadedVideos, setLoadedVideos] = useState(0);
+  // const [loadedVideos, setLoadedVideos] = useState(0);
 
   const totalVideos = 4;
   const nextVideoRef = useRef<HTMLVideoElement>(null);
@@ -26,10 +26,11 @@ const Hero = () => {
     setPreviewVideoIndex(upcomingVideoIndex);
   };
 
-  const handleVideoLoadedData = () => {
-    setLoadedVideos((prev) => prev + 1);
-  };
+  // const handleVideoLoadedData = () => {
+  //   setLoadedVideos((prev) => prev + 1);
+  // };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   useGSAP(
     () => {
       if (isClicked) {
@@ -92,7 +93,7 @@ const Hero = () => {
                 muted
                 id="preview-video-box"
                 className="size-64 origin-center scale-150 object-cover"
-                onLoadedData={handleVideoLoadedData}
+                // onLoadedData={handleVideoLoadedData}
               />
             </div>
           </div>
@@ -103,7 +104,7 @@ const Hero = () => {
             muted
             id="preview-video-animation"
             className="absolute-center invisible z-40 size-64 object-cover"
-            onLoadedData={handleVideoLoadedData}
+            // onLoadedData={handleVideoLoadedData}
           />
           <video
             src={getVideoSource(
@@ -113,7 +114,7 @@ const Hero = () => {
             loop
             muted
             className="absolute top-0 left-0 size-full object-cover"
-            onLoadedData={handleVideoLoadedData}
+            // onLoadedData={handleVideoLoadedData}
           />
         </div>
         <h1 className="special-font hero-heading text-blue-75 absolute right-5 bottom-5 z-40">

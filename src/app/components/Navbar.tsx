@@ -26,21 +26,21 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    isAudioPlay
-      ? audioRef.current && audioRef.current.play()
-      : audioRef.current && audioRef.current.pause();
+    if (audioRef.current) {
+      isAudioPlay ? audioRef.current.play() : audioRef.current.pause();
+    }
   }, [isAudioPlay]);
 
   useEffect(() => {
     if (y === 0) {
       setIsVisible(true);
-      navRef.current && navRef.current.classList.remove("floating-nav");
+      if (navRef.current) navRef.current.classList.remove("floating-nav");
     } else if (y > lastY) {
       setIsVisible(false);
-      navRef.current && navRef.current.classList.add("floating-nav");
+      if (navRef.current) navRef.current.classList.add("floating-nav");
     } else if (y < lastY) {
       setIsVisible(true);
-      navRef.current && navRef.current.classList.add("floating-nav");
+      if (navRef.current) navRef.current.classList.add("floating-nav");
     }
 
     setLastY(y);

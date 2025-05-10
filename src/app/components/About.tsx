@@ -13,6 +13,7 @@ const About = () => {
 
   const aboutContainerRef = useRef<HTMLDivElement>(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   useGSAP(() => {
     const clipAnimation = gsap.timeline({
       scrollTrigger: {

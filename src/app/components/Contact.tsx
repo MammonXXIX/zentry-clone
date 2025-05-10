@@ -12,7 +12,7 @@ const ImageContainer = ({
 }) => {
   return (
     <div className={className}>
-      <img src={src} />
+      <img src={src} alt={src} />
     </div>
   );
 };
