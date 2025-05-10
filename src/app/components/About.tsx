@@ -24,9 +24,11 @@ const About = () => {
         pin: true,
         pinSpacing: true,
         onUpdate: (timeline) => {
-          timeline.progress >= 0.8
-            ? setIsFullscreen(true)
-            : setIsFullscreen(false);
+          if (timeline.progress >= 0.8) {
+            setIsFullscreen(true);
+          } else {
+            setIsFullscreen(false);
+          }
         },
       },
     });
