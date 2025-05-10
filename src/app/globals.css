@@ -55,6 +55,18 @@
     clip-path: polygon(5% 5%, 85% 20%, 100% 80%, 0% 100%);
   }
 
+  .contact-clip-path-1 {
+    clip-path: polygon(20% 0%, 80% 0%, 75% 65%, 25% 80%);
+  }
+
+  .contact-clip-path-2 {
+    clip-path: polygon(30% 15%, 85% 30%, 60% 100%, 10% 65%);
+  }
+
+  .contact-clip-path-3 {
+    clip-path: polygon(15% 0, 90% 10%, 75% 100%, 0 100%);
+  }
+
   .story-image-container {
     filter: url("#flt_tag");
   }

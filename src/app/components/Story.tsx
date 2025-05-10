@@ -12,8 +12,16 @@ const Story = () => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!containerRef.current) return;
 
-      const { left, top, width, height } =
+      const { left, top, right, bottom, width, height } =
         containerRef.current.getBoundingClientRect();
+
+      const isWithinSection =
+        e.clientX >= left &&
+        e.clientX <= right &&
+        e.clientY >= top &&
+        e.clientY <= bottom;
+
+      if (!isWithinSection) return;
 
       const centerX = left + width / 2;
       const centerY = top + height / 2;
