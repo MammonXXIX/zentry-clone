@@ -4,9 +4,9 @@ a web application inspired by **Zentry**, build with Next & GSAP for animation.
 
 ## 🛠 Tech Stack
 
-    - [Next.JS](https://nextjs.org/)
-    - [GSAP](https://gsap.com/)
-    - [Tailwind](https://tailwindcss.com/)
+-   [Next.JS](https://nextjs.org/)
+-   [GSAP](https://gsap.com/)
+-   [Tailwind](https://tailwindcss.com/)
 
 ## 📦 Installation
 
