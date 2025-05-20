@@ -2,11 +2,23 @@
 
 a web application inspired by **Zentry**, build with Next & GSAP for animation.
 
+## Preview
+
+<p align="center">
+  <img src="public/preview/001.png" width="400"/>
+  <img src="public/preview/002.png" width="400"/>
+  <br/>
+  <img src="public/preview/003.png" width="400"/>
+  <img src="public/preview/004.png" width="400"/>
+  <br/>
+  <img src="public/preview/005.png" width="800"/>
+</p>
+
 ## 🛠 Tech Stack
 
--   [Next.JS](https://nextjs.org/)
--   [GSAP](https://gsap.com/)
--   [Tailwind](https://tailwindcss.com/)
+- [Next.JS](https://nextjs.org/)
+- [GSAP](https://gsap.com/)
+- [Tailwind](https://tailwindcss.com/)
 
 ## 📦 Installation
 
